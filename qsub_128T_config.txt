@@ -1,0 +1,85 @@
+## Please do not add empty lines anywhere in this file!!
+##################################################################
+NCORES=10                  # number of cores
+WSMEM=20                   # memory allocation in GB
+SHM=True                   # use /dev/shm
+##################################################################
+## pipeline-wide parameters
+PREPDATA=True		# import data and prepare for flagging
+CHGCENTRE=False         # change phase center
+ACAVG=False           	# run RFI analysis
+FLAGGING=False        	# apply flagging
+DELAYCAL=True        	# create calibration model
+IMAGECAL=False          # use image calibration
+GENCAL=True          	# generate calibration solutions
+APPLYCAL=True        	# apply calibration solutions
+FHDCAL=False            # apply FHD calibration (will overwrite previous calibrations)
+SELFCAL=True        	# apply self calibration (APPLYCAL or FHDCAL should be True)
+EXPORTUVFITS=False    	# export uvfits
+ZENITH=False		# rephase to zenith
+WSCLEAN=True		# use wsclean
+CLEAN=True          	# clean image
+PBCOR=True           	# correct for primary beam
+ANALYTIC=False          # use analytic primary beam model (PBCOR should be True)
+SEXT=True	     	# extract source
+ARCHIVECLEAN=True    	# clean up archive
+###################################################################
+## chgcentre parameters for new phase center 
+PHASERA="00h00m00.0s"   # RA in hms
+PHASEDEC="-27d00m00s"   # Dec in dms
+###################################################################
+## bash_delaycal.py parameters
+CATALOG="mwacs_all_b3_140206"     # source catalog
+CALSRC="all"                  # list of calibrator sources
+CALFILE="mwa_32T_pb"          # AIPY calfile
+NSRCS=7                       # number of calibrator sources
+FOV=85                        # field of view in degrees (from zenith)
+## image calibration parameters
+IMCALFILE="test_eor1"           # name of image calibration file (NO .fits extension), located in /csr/mwa/pipeline!
+###################################################################
+## FLAG FILE
+FLAGFILE="default"            # custom flagfile (<flagfile.flg>), FLAGGING must be True
+## CASA bandpass parameters (for calibration)
+NLOOPS=1	 	      	 # number of selfcal loops
+MINSNR=3.0                    	 # minimum SNR
+REFANT="Tile036"               	 # reference antenna ** 128T tile name has 3 digits **
+MINBLPERANT=2                 	 # minimum baseline per antenna
+BANDTYPE="B"                  	 # bandpass solution
+SOLINT="300s,50"		 # solution interval
+SOLNORM=False                 	 # normalize solution
+CALTABLE="default"            	 # use specific <caltable>.bcal (NO .bcal extension)
+FHDCALDIR="fhdnpz_directory"  	 # directory that contains the FHD *.npz calibration files
+UVRANGE=">0.01klambda"           # uvrange ("" for all)  ** 128T commissioning: >0.01klambda  **
+###################################################################
+## wsclean parameters (for imaging)
+WIMSIZE=4096		   # image size (same x and y)
+WCELL=0.0083               # pixel size (deg)
+WNITERSELF=1000            # number of selfcal clean iterations
+WNITER=10000               # number of clean iterations
+WTHRESHOLD=0.01            # threshold (Jy)
+WTHRESHOLDSELF=1           # selfcal threshold (Jy)
+WGAIN=0.1  		   # clean gain
+WMGAIN=0.9  		   # major cycle gain
+WGRIDMODE="kb"  	   # kernel
+WWEIGHTING="uniform"  	   # weighting
+STARTCHAN=0		   # start channel number for narrow-band imaging (set to 0 if full-band)
+ENDCHAN=384		   # end channel number for narrow-band imaging (exclusive; if full-band: set to 384 for 80kHz or 768 for 40kHz)
+## AEGEAN
+MAXRMS=20                  # Jy (masking)
+###################################################################
+## CASA clean parameters (for imaging)
+IMAGEMODE="fullband"	      # non-CASA (fullband, subband, imgcube)
+NBANDS=4                      # number of subbands if IMAGEMODE is "subband"
+IMAGESUFFIX="none"            # non-CASA, suffix to add to image names
+NITER=5000                    # number of clean iterations
+GAIN=0.1                      # clean loop gain
+THRESHOLD="50mJy"             # clean threshold
+PSFMODE="clark"               # algorithm to compute psf
+IMAGERMODE="csclean"          # clean algorithm
+GRIDMODE="widefield"          # w-projection
+WPROJPLANES=256               # number of w-proj planes
+IMSIZE=4096                   # image size (same x and y)
+CELL="0.5arcmin"              # cell size
+WEIGHTING="uniform"           # uv weighting
+CYCLEFACTOR=5                 # csclean cyclefactor
+###################################################################
