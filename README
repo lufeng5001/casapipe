@@ -1,1 +1,9 @@
-# casapipe
+CASApipe uses a lot of existing tools and code developed by other people. It's also written specifically for the MIT eor computers, so it only serves as a reference here and is not very portable (or even all that useful). 
+
+Publicly available code that CASApipe requires: 
+CASA - https://casa.nrao.edu/
+wsclean - https://sourceforge.net/projects/wsclean/
+chgcentre - https://sourceforge.net/p/wsclean/wiki/chgcentre/
+Aegean - https://github.com/PaulHancock/Aegean
+
+CASApipe also uses software developed specifically for the MWA, which is available to the MWA collaboration in the repository MWA_Tools (http://mwa-lfd.haystack.mit.edu/twiki/bin/view/Main/MWA_Tools). It also uses custom code written by Danny Jacobs, Aaron Ewall-Wice, and Ron Remillard. 
